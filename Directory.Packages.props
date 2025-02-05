@@ -3,6 +3,12 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    
+    <PackageVersion Include="HotChocolate.AspNetCore" Version="15.0.0" />
+    <PackageVersion Include="HotChocolate.AspNetCore.CommandLine" Version="15.0.0" />
+    <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.0.0" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.1" />
   </ItemGroup>
 </Project>

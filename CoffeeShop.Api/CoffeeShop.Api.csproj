@@ -1,8 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <RootNamespace>CoffeeShop</RootNamespace>
+    <UserSecretsId>ae520b21-5884-40ff-8b32-55f13cb1a00e</UserSecretsId>
   </PropertyGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="HotChocolate.AspNetCore" />
+    <PackageReference Include="HotChocolate.AspNetCore.CommandLine" />
+    <PackageReference Include="HotChocolate.Types.Analyzers" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoffeeShop.Application\CoffeeShop.Application.csproj" />
     <ProjectReference Include="..\CoffeeShop.Infrastructure\CoffeeShop.Infrastructure.csproj" />
