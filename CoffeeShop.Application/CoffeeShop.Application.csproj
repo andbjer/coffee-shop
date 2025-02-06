@@ -5,6 +5,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="HotChocolate.AspNetCore.CommandLine" />
+      <PackageReference Include="HotChocolate.Types.Analyzers" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
       <PackageReference Include="Microsoft.Extensions.Hosting" />
     </ItemGroup>

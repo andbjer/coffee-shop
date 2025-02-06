@@ -1,10 +1,12 @@
+using CoffeeShop.Application;
 using CoffeeShop.Infrastructure;
 using CoffeeShop.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddApplicationServices();
 builder.AddInfrastructureServices();
-builder.AddGraphQL().AddTypes();
+builder.AddGraphQL().AddApiTypes().AddApplicationTypes();
 
 var app = builder.Build();
 

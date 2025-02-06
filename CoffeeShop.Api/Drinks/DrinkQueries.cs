@@ -1,13 +1,12 @@
-using CoffeeShop.Application.Common;
-using Microsoft.EntityFrameworkCore;
+using CoffeeShop.Application.Drinks.Queries;
 
 namespace CoffeeShop.Drinks;
 
 [QueryType]
 public static class DrinkQueries
 {
-    public static IQueryable<Drink> GetDrinks(ICoffeeShopDbContext context)
+    public static async Task<IList<Drink>> GetDrinks(IMediator mediator, CancellationToken ct)
     {
-        return context.Drinks.AsNoTracking().OrderBy(x => x.Name);
+        return await mediator.Send(new GetDrinks(), ct);
     }
 }

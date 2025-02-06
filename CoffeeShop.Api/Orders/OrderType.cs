@@ -1,5 +1,3 @@
-using CoffeeShop.Domain.Entities;
-
 namespace CoffeeShop.Orders;
 
 public class OrderType : ObjectType<Order>

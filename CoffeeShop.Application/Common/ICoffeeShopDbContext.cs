@@ -8,4 +8,6 @@ public interface ICoffeeShopDbContext
     DbSet<Customer> Customers { get; set; }
     DbSet<Drink> Drinks { get; set; }
     DbSet<Order> Orders { get; set; }
+
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

@@ -1,5 +1,3 @@
-using CoffeeShop.Domain.Entities;
-
 namespace CoffeeShop.Baristas;
 
 public class BaristaType : ObjectType<Barista>

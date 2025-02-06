@@ -1,1 +1,1 @@
-[assembly: HotChocolate.Module("Types")]
+[assembly: HotChocolate.Module("ApiTypes")]

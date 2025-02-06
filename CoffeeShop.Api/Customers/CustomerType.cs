@@ -1,5 +1,3 @@
-using CoffeeShop.Domain.Entities;
-
 namespace CoffeeShop.Customers;
 
 public class CustomerType : ObjectType<Customer>

@@ -1,13 +1,12 @@
-using CoffeeShop.Application.Common;
-using Microsoft.EntityFrameworkCore;
+using CoffeeShop.Application.Orders.Queries;
 
 namespace CoffeeShop.Orders;
 
 [QueryType]
 public static class OrderQueries
 {
-    public static IQueryable<Order> GetOrders(ICoffeeShopDbContext context)
+    public static async Task<IList<Order>> GetOrders(IMediator mediator, CancellationToken ct)
     {
-        return context.Orders.AsNoTracking().OrderBy(x => x.Created);
+        return await mediator.Send(new GetOrders(), ct);
     }
 }
