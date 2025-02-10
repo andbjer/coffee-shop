@@ -16,4 +16,14 @@ public static class OrderMutations
         var orderId = await mediator.Send(new AddOrder(input), cancellationToken);
         return await mediator.Send(new GetOrderById(orderId), cancellationToken);
     }
+
+    public static async Task<Order> PrepareOrder(
+        PrepareOrderInput input,
+        IMediator mediator,
+        CancellationToken cancellationToken
+    )
+    {
+        await mediator.Send(new PrepareOrder(input), cancellationToken);
+        return await mediator.Send(new GetOrderById(input.OrderId), cancellationToken);
+    }
 }

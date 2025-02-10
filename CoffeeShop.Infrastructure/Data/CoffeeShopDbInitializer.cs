@@ -83,6 +83,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Pure, concentrated coffee bliss.",
                 Price = 2.50,
                 CaffeineLevel = CaffeineLevel.High,
+                PreparationTime = TimeSpan.FromMinutes(0.5),
             },
             new()
             {
@@ -90,6 +91,7 @@ public class CoffeeShopDbInitializer(
                 Description = "A creamy blend of espresso and steamed milk foam.",
                 Price = 3.50,
                 CaffeineLevel = CaffeineLevel.Medium,
+                PreparationTime = TimeSpan.FromMinutes(3),
             },
             new()
             {
@@ -97,6 +99,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Smooth, velvety espresso and microfoam.",
                 Price = 3.75,
                 CaffeineLevel = CaffeineLevel.Medium,
+                PreparationTime = TimeSpan.FromMinutes(2),
             },
             new()
             {
@@ -104,6 +107,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Espresso diluted with hot water.",
                 Price = 2.75,
                 CaffeineLevel = CaffeineLevel.High,
+                PreparationTime = TimeSpan.FromMinutes(1.5),
             },
             new()
             {
@@ -111,6 +115,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Espresso, chocolate syrup, and milk.",
                 Price = 4.25,
                 CaffeineLevel = CaffeineLevel.High,
+                PreparationTime = TimeSpan.FromMinutes(2),
             },
             new()
             {
@@ -118,6 +123,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Spiced black tea with steamed milk.",
                 Price = 3.50,
                 CaffeineLevel = CaffeineLevel.Low,
+                PreparationTime = TimeSpan.FromMinutes(3),
             },
             new()
             {
@@ -125,6 +131,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Steamed milk mixed with matcha powder.",
                 Price = 4.00,
                 CaffeineLevel = CaffeineLevel.Low,
+                PreparationTime = TimeSpan.FromMinutes(3),
             },
             new()
             {
@@ -132,6 +139,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Iced coffee with a hint of vanilla syrup.",
                 Price = 3.25,
                 CaffeineLevel = CaffeineLevel.Medium,
+                PreparationTime = TimeSpan.FromMinutes(2),
             },
             new()
             {
@@ -139,6 +147,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Espresso layered with vanilla and caramel drizzle.",
                 Price = 4.50,
                 CaffeineLevel = CaffeineLevel.Medium,
+                PreparationTime = TimeSpan.FromMinutes(3),
             },
             new()
             {
@@ -146,6 +155,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Strong, smooth coffee brewed cold.",
                 Price = 4.00,
                 CaffeineLevel = CaffeineLevel.Extreme,
+                PreparationTime = TimeSpan.FromMinutes(1),
             },
             new()
             {
@@ -153,6 +163,7 @@ public class CoffeeShopDbInitializer(
                 Description = "All the flavor, none of the buzz.",
                 Price = 2.25,
                 CaffeineLevel = CaffeineLevel.None,
+                PreparationTime = TimeSpan.FromMinutes(1),
             },
             new()
             {
@@ -160,6 +171,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Seasonal delight with espresso, pumpkin, and spices.",
                 Price = 4.75,
                 CaffeineLevel = CaffeineLevel.Medium,
+                PreparationTime = TimeSpan.FromMinutes(3),
             },
             new()
             {
@@ -167,6 +179,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Creamy hot cocoa with hazelnut syrup.",
                 Price = 3.00,
                 CaffeineLevel = CaffeineLevel.None,
+                PreparationTime = TimeSpan.FromMinutes(2.5),
             },
             new()
             {
@@ -174,6 +187,7 @@ public class CoffeeShopDbInitializer(
                 Description = "Triple espresso shot for the brave souls.",
                 Price = 5.50,
                 CaffeineLevel = CaffeineLevel.Extreme,
+                PreparationTime = TimeSpan.FromMinutes(1),
             },
         };
         context.Drinks.AddRange(drinks);

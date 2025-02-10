@@ -6,5 +6,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {
         builder.Property(x => x.Name).HasMaxLength(50);
         builder.Property(x => x.Email).HasMaxLength(100);
+
+        builder.HasMany(x => x.Orders).WithOne(x => x.Customer).HasForeignKey(x => x.CustomerId);
     }
 }

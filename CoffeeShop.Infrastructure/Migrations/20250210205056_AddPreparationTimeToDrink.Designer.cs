@@ -4,6 +4,7 @@ using CoffeeShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CoffeeShopDbContext))]
-    partial class CoffeeShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250210205056_AddPreparationTimeToDrink")]
+    partial class AddPreparationTimeToDrink
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,7 +38,7 @@ namespace CoffeeShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Baristas", (string)null);
+                    b.ToTable("Baristas");
                 });
 
             modelBuilder.Entity("CoffeeShop.Domain.Entities.Customer", b =>
@@ -56,7 +59,7 @@ namespace CoffeeShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", (string)null);
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("CoffeeShop.Domain.Entities.Drink", b =>
@@ -88,7 +91,7 @@ namespace CoffeeShop.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Drinks", (string)null);
+                    b.ToTable("Drinks");
                 });
 
             modelBuilder.Entity("CoffeeShop.Domain.Entities.Order", b =>
@@ -125,7 +128,7 @@ namespace CoffeeShop.Infrastructure.Migrations
 
                     b.HasIndex("DrinkId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("CoffeeShop.Domain.Entities.Order", b =>

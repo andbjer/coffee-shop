@@ -2,7 +2,7 @@ using CoffeeShop.Domain.Entities;
 
 namespace CoffeeShop.Application.Common;
 
-public interface ICoffeeShopDbContext
+public interface ICoffeeShopDbContext : IDisposable
 {
     DbSet<Barista> Baristas { get; set; }
     DbSet<Customer> Customers { get; set; }

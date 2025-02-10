@@ -12,7 +12,14 @@ public static class DependencyInjection
     {
         var connectionString = builder.Configuration.GetConnectionString("CoffeeShopDb");
 
-        builder.Services.AddDbContext<CoffeeShopDbContext>(options =>
+        builder.Services.AddDbContext<CoffeeShopDbContext>(
+            options =>
+            {
+                options.UseSqlServer(connectionString);
+            },
+            optionsLifetime: ServiceLifetime.Singleton
+        );
+        builder.Services.AddPooledDbContextFactory<CoffeeShopDbContext>(options =>
         {
             options.UseSqlServer(connectionString);
         });
@@ -20,6 +27,7 @@ public static class DependencyInjection
         builder.Services.AddScoped<ICoffeeShopDbContext>(provider =>
             provider.GetRequiredService<CoffeeShopDbContext>()
         );
+        builder.Services.AddScoped<ICoffeeShopDbContextFactory, CoffeeShopDbContextFactory>();
 
         builder.Services.AddScoped<CoffeeShopDbInitializer>();
     }
