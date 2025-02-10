@@ -1,13 +1,17 @@
 using CoffeeShop.Application.Common;
 using CoffeeShop.Application.Orders.Models;
 using CoffeeShop.Domain.Enums;
+using HotChocolate.Subscriptions;
 
 namespace CoffeeShop.Application.Orders.Mutations;
 
 public record PrepareOrder(PrepareOrderInput Input) : IRequest;
 
-public class PrepareOrderHandler(ICoffeeShopDbContext context, IMediator mediator)
-    : IRequestHandler<PrepareOrder>
+public class PrepareOrderHandler(
+    ICoffeeShopDbContext context,
+    IMediator mediator,
+    ITopicEventSender eventSender
+) : IRequestHandler<PrepareOrder>
 {
     public async Task Handle(PrepareOrder request, CancellationToken cancellationToken)
     {
@@ -20,6 +24,8 @@ public class PrepareOrderHandler(ICoffeeShopDbContext context, IMediator mediato
         order.Updated = DateTimeOffset.UtcNow;
 
         await context.SaveChangesAsync(cancellationToken);
+
+        await eventSender.SendAsync(TopicName.OnOrderUpdated, order.Id, cancellationToken);
 
         _ = mediator.Send(
             new BrewCoffee(

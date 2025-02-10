@@ -2,12 +2,14 @@ using CoffeeShop.Application.Common;
 using CoffeeShop.Application.Orders.Models;
 using CoffeeShop.Domain.Entities;
 using CoffeeShop.Domain.Enums;
+using HotChocolate.Subscriptions;
 
 namespace CoffeeShop.Application.Orders.Mutations;
 
 public record AddOrder(AddOrderInput Input) : IRequest<Guid>;
 
-public class AddOrderHandler(ICoffeeShopDbContext context) : IRequestHandler<AddOrder, Guid>
+public class AddOrderHandler(ICoffeeShopDbContext context, ITopicEventSender eventSender)
+    : IRequestHandler<AddOrder, Guid>
 {
     public async Task<Guid> Handle(AddOrder request, CancellationToken cancellationToken)
     {
@@ -21,6 +23,8 @@ public class AddOrderHandler(ICoffeeShopDbContext context) : IRequestHandler<Add
 
         context.Orders.Add(order);
         await context.SaveChangesAsync(cancellationToken);
+
+        await eventSender.SendAsync(TopicName.OnOrderUpdated, order.Id, cancellationToken);
 
         return order.Id;
     }

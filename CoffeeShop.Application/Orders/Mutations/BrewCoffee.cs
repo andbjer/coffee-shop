@@ -1,12 +1,15 @@
 using CoffeeShop.Application.Common;
 using CoffeeShop.Domain.Enums;
+using HotChocolate.Subscriptions;
 
 namespace CoffeeShop.Application.Orders.Mutations;
 
 public record BrewCoffee(Guid OrderId, TimeSpan BrewingTime) : IRequest;
 
-public class BrewCoffeeHandler(ICoffeeShopDbContextFactory dbContextFactory)
-    : IRequestHandler<BrewCoffee>
+public class BrewCoffeeHandler(
+    ICoffeeShopDbContextFactory dbContextFactory,
+    ITopicEventSender eventSender
+) : IRequestHandler<BrewCoffee>
 {
     public async Task Handle(BrewCoffee request, CancellationToken cancellationToken)
     {
@@ -29,5 +32,7 @@ public class BrewCoffeeHandler(ICoffeeShopDbContextFactory dbContextFactory)
         order.Updated = DateTimeOffset.UtcNow;
 
         await context.SaveChangesAsync(cancellationToken);
+
+        await eventSender.SendAsync(TopicName.OnOrderUpdated, order.Id, cancellationToken);
     }
 }

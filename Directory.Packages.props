@@ -6,6 +6,7 @@
     <PackageVersion Include="GreenDonut.Abstractions" Version="15.0.0" />
     <PackageVersion Include="HotChocolate.AspNetCore" Version="15.0.0" />
     <PackageVersion Include="HotChocolate.AspNetCore.CommandLine" Version="15.0.0" />
+    <PackageVersion Include="HotChocolate.Subscriptions.InMemory" Version="15.0.3" />
     <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.0.0" />
     <PackageVersion Include="MediatR" Version="12.4.1" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1" />
