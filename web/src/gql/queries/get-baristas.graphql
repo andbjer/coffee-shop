@@ -1,0 +1,10 @@
+query GetBaristas {
+  baristas {
+    ...barista
+  }
+}
+
+fragment barista on Barista {
+  id
+  name
+}

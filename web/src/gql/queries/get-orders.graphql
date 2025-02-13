@@ -1,0 +1,25 @@
+query GetOrders {
+  orders {
+    ...order
+  }
+}
+
+fragment order on Order {
+  id
+  status
+  customer {
+    id
+    name
+  }
+  drink {
+    id
+    name
+    price
+  }
+  barista {
+    id
+    name
+  }
+  created
+  updated
+}

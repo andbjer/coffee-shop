@@ -1,0 +1,105 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+"""
+The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response.
+"""
+directive @cost(
+  """
+  The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc.
+  """
+  weight: String!
+) on ARGUMENT_DEFINITION | ENUM | FIELD_DEFINITION | INPUT_FIELD_DEFINITION | OBJECT | SCALAR
+
+input AddCustomerInput {
+  email: String!
+  name: String!
+}
+
+input AddOrderInput {
+  customerId: UUID!
+  drinkId: UUID!
+}
+
+type Barista {
+  id: UUID!
+  name: String!
+  orders: [Order!]
+}
+
+enum CaffeineLevel {
+  EXTREME
+  HIGH
+  LOW
+  MEDIUM
+  NONE
+}
+
+type Customer {
+  email: String!
+  id: UUID!
+  name: String!
+  orders: [Order!]
+}
+
+"""The `DateTime` scalar represents an ISO-8601 compliant date time type."""
+scalar DateTime
+
+type Drink {
+  caffeineLevel: CaffeineLevel!
+  description: String!
+  id: UUID!
+  name: String!
+  orders: [Order!]
+  preparationTime: TimeSpan!
+  price: Float!
+}
+
+type Mutation {
+  addCustomer(input: AddCustomerInput!): Customer
+  addOrder(input: AddOrderInput!): Order!
+  prepareOrder(input: PrepareOrderInput!): Order!
+}
+
+type Order {
+  barista: Barista
+  baristaId: UUID
+  created: DateTime!
+  customer: Customer
+  customerId: UUID!
+  drink: Drink
+  drinkId: UUID!
+  id: UUID!
+  status: OrderStatus!
+  updated: DateTime
+}
+
+enum OrderStatus {
+  COMPLETED
+  ORDERED
+  PENDING
+}
+
+input PrepareOrderInput {
+  baristaId: UUID!
+  orderId: UUID!
+}
+
+type Query {
+  baristas: [Barista!]!
+  customers: [Customer!]!
+  drinks: [Drink!]!
+  orders: [Order!]!
+}
+
+type Subscription {
+  orderUpdated: Order!
+}
+
+"""The `TimeSpan` scalar represents an ISO-8601 compliant duration type."""
+scalar TimeSpan
+
+scalar UUID

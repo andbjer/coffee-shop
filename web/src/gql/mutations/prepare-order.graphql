@@ -1,0 +1,5 @@
+mutation PrepareOrder($input: PrepareOrderInput!) {
+  prepareOrder(input: $input) {
+    ...order
+  }
+}

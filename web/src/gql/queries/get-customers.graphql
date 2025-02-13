@@ -1,0 +1,10 @@
+query GetCustomers {
+  customers {
+    ...customer
+  }
+}
+
+fragment customer on Customer {
+  id
+  name
+}

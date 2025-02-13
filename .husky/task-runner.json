@@ -2,6 +2,12 @@
   "$schema": "https://alirezanet.github.io/Husky.Net/schema.json",
   "tasks": [
     {
+      "name": "Run prettier",
+      "command": "yarn",
+      "cwd": "web",
+      "args": ["pretty"]
+    },
+    {
       "name": "Run csharpier",
       "command": "dotnet",
       "args": ["csharpier", "${staged}"],

@@ -1,0 +1,12 @@
+query GetDrinks {
+  drinks {
+    ...drink
+  }
+}
+
+fragment drink on Drink {
+  id
+  name
+  description
+  price
+}

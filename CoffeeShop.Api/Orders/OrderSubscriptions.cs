@@ -8,7 +8,7 @@ public static class OrderSubscriptions
 {
     [Subscribe] // tells schema builder that this resolver method needs to be hooked up to the pub/sub system
     [Topic(TopicName.OnOrderUpdated)]
-    public static async Task<Order> OnOrderUpdatedAsync(
+    public static async Task<Order> OrderUpdatedAsync(
         [EventMessage] Guid orderId,
         IMediator mediator,
         CancellationToken cancellationToken
