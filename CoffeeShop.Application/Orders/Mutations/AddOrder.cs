@@ -6,12 +6,12 @@ using HotChocolate.Subscriptions;
 
 namespace CoffeeShop.Application.Orders.Mutations;
 
-public record AddOrder(AddOrderInput Input) : IRequest<Guid>;
+public record AddOrder(AddOrderInput Input) : IRequest<int>;
 
 public class AddOrderHandler(ICoffeeShopDbContext context, ITopicEventSender eventSender)
-    : IRequestHandler<AddOrder, Guid>
+    : IRequestHandler<AddOrder, int>
 {
-    public async Task<Guid> Handle(AddOrder request, CancellationToken cancellationToken)
+    public async Task<int> Handle(AddOrder request, CancellationToken cancellationToken)
     {
         var order = new Order
         {

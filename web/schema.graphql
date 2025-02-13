@@ -72,7 +72,7 @@ type Order {
   customerId: UUID!
   drink: Drink
   drinkId: UUID!
-  id: UUID!
+  id: Int!
   status: OrderStatus!
   updated: DateTime
 }
@@ -85,7 +85,7 @@ enum OrderStatus {
 
 input PrepareOrderInput {
   baristaId: UUID!
-  orderId: UUID!
+  orderId: Int!
 }
 
 type Query {

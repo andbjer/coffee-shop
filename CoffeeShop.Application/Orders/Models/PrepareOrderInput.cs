@@ -1,3 +1,3 @@
 namespace CoffeeShop.Application.Orders.Models;
 
-public record PrepareOrderInput(Guid OrderId, Guid BaristaId);
+public record PrepareOrderInput(int OrderId, Guid BaristaId);

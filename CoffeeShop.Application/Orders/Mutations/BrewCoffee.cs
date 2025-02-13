@@ -4,7 +4,7 @@ using HotChocolate.Subscriptions;
 
 namespace CoffeeShop.Application.Orders.Mutations;
 
-public record BrewCoffee(Guid OrderId, TimeSpan BrewingTime) : IRequest;
+public record BrewCoffee(int OrderId, TimeSpan BrewingTime) : IRequest;
 
 public class BrewCoffeeHandler(
     ICoffeeShopDbContextFactory dbContextFactory,

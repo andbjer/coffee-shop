@@ -7,8 +7,8 @@ namespace CoffeeShop.Application.Orders;
 public static class OrderDataLoaders
 {
     [DataLoader]
-    public static async Task<Dictionary<Guid, Order>> GetOrderByIdAsync(
-        IReadOnlyList<Guid> orderIds,
+    public static async Task<Dictionary<int, Order>> GetOrderByIdAsync(
+        IReadOnlyList<int> orderIds,
         ICoffeeShopDbContext context,
         CancellationToken cancellationToken
     )
