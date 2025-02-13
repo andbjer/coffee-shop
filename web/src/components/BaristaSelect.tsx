@@ -11,7 +11,7 @@ import {
 } from './ui/select';
 
 type BaristaSelectProps = {
-  orderId: string;
+  orderId: number;
 };
 export const BaristaSelect = ({ orderId }: BaristaSelectProps) => {
   const { data, loading } = useGetBaristasQuery({
