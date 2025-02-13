@@ -6,7 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddApplicationServices();
 builder.AddInfrastructureServices();
-builder.AddGraphQL().AddApiTypes().AddApplicationTypes().AddInMemorySubscriptions();
+builder
+    .AddGraphQL()
+    .AddApiTypes()
+    .AddApplicationTypes()
+    .AddSorting()
+    .AddFiltering()
+    .AddInMemorySubscriptions();
 
 var app = builder.Build();
 

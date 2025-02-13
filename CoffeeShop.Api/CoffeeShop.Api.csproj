@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="HotChocolate.AspNetCore" />
     <PackageReference Include="HotChocolate.AspNetCore.CommandLine" />
+    <PackageReference Include="HotChocolate.Data" />
     <PackageReference Include="HotChocolate.Subscriptions.InMemory" />
     <PackageReference Include="HotChocolate.Types.Analyzers" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design">

@@ -30,12 +30,32 @@ type Barista {
   orders: [Order!]
 }
 
+input BaristaFilterInput {
+  and: [BaristaFilterInput!]
+  id: UuidOperationFilterInput
+  name: StringOperationFilterInput
+  or: [BaristaFilterInput!]
+  orders: ListFilterInputTypeOfOrderFilterInput
+}
+
+input BaristaSortInput {
+  id: SortEnumType
+  name: SortEnumType
+}
+
 enum CaffeineLevel {
   EXTREME
   HIGH
   LOW
   MEDIUM
   NONE
+}
+
+input CaffeineLevelOperationFilterInput {
+  eq: CaffeineLevel
+  in: [CaffeineLevel!]
+  neq: CaffeineLevel
+  nin: [CaffeineLevel!]
 }
 
 type Customer {
@@ -45,8 +65,38 @@ type Customer {
   orders: [Order!]
 }
 
+input CustomerFilterInput {
+  and: [CustomerFilterInput!]
+  email: StringOperationFilterInput
+  id: UuidOperationFilterInput
+  name: StringOperationFilterInput
+  or: [CustomerFilterInput!]
+  orders: ListFilterInputTypeOfOrderFilterInput
+}
+
+input CustomerSortInput {
+  email: SortEnumType
+  id: SortEnumType
+  name: SortEnumType
+}
+
 """The `DateTime` scalar represents an ISO-8601 compliant date time type."""
 scalar DateTime
+
+input DateTimeOperationFilterInput {
+  eq: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime]
+  lt: DateTime
+  lte: DateTime
+  neq: DateTime
+  ngt: DateTime
+  ngte: DateTime
+  nin: [DateTime]
+  nlt: DateTime
+  nlte: DateTime
+}
 
 type Drink {
   caffeineLevel: CaffeineLevel!
@@ -56,6 +106,64 @@ type Drink {
   orders: [Order!]
   preparationTime: TimeSpan!
   price: Float!
+}
+
+input DrinkFilterInput {
+  and: [DrinkFilterInput!]
+  caffeineLevel: CaffeineLevelOperationFilterInput
+  description: StringOperationFilterInput
+  id: UuidOperationFilterInput
+  name: StringOperationFilterInput
+  or: [DrinkFilterInput!]
+  orders: ListFilterInputTypeOfOrderFilterInput
+  preparationTime: TimeSpanOperationFilterInput
+  price: FloatOperationFilterInput
+}
+
+input DrinkSortInput {
+  caffeineLevel: SortEnumType
+  description: SortEnumType
+  id: SortEnumType
+  name: SortEnumType
+  preparationTime: SortEnumType
+  price: SortEnumType
+}
+
+input FloatOperationFilterInput {
+  eq: Float
+  gt: Float
+  gte: Float
+  in: [Float]
+  lt: Float
+  lte: Float
+  neq: Float
+  ngt: Float
+  ngte: Float
+  nin: [Float]
+  nlt: Float
+  nlte: Float
+}
+
+input IntOperationFilterInput {
+  eq: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  lt: Int
+  lte: Int
+  neq: Int
+  ngt: Int
+  ngte: Int
+  nin: [Int]
+  nlt: Int
+  nlte: Int
+}
+
+input ListFilterInputTypeOfOrderFilterInput {
+  all: OrderFilterInput
+  any: Boolean
+  none: OrderFilterInput
+  some: OrderFilterInput
 }
 
 type Mutation {
@@ -77,10 +185,45 @@ type Order {
   updated: DateTime
 }
 
+input OrderFilterInput {
+  and: [OrderFilterInput!]
+  barista: BaristaFilterInput
+  baristaId: UuidOperationFilterInput
+  created: DateTimeOperationFilterInput
+  customer: CustomerFilterInput
+  customerId: UuidOperationFilterInput
+  drink: DrinkFilterInput
+  drinkId: UuidOperationFilterInput
+  id: IntOperationFilterInput
+  or: [OrderFilterInput!]
+  status: OrderStatusOperationFilterInput
+  updated: DateTimeOperationFilterInput
+}
+
+input OrderSortInput {
+  barista: BaristaSortInput
+  baristaId: SortEnumType
+  created: SortEnumType
+  customer: CustomerSortInput
+  customerId: SortEnumType
+  drink: DrinkSortInput
+  drinkId: SortEnumType
+  id: SortEnumType
+  status: SortEnumType
+  updated: SortEnumType
+}
+
 enum OrderStatus {
   COMPLETED
   ORDERED
   PENDING
+}
+
+input OrderStatusOperationFilterInput {
+  eq: OrderStatus
+  in: [OrderStatus!]
+  neq: OrderStatus
+  nin: [OrderStatus!]
 }
 
 input PrepareOrderInput {
@@ -92,7 +235,27 @@ type Query {
   baristas: [Barista!]!
   customers: [Customer!]!
   drinks: [Drink!]!
-  orders: [Order!]!
+  orders(order: [OrderSortInput!], where: OrderFilterInput): [Order!]!
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  contains: String
+  endsWith: String
+  eq: String
+  in: [String]
+  ncontains: String
+  nendsWith: String
+  neq: String
+  nin: [String]
+  nstartsWith: String
+  or: [StringOperationFilterInput!]
+  startsWith: String
 }
 
 type Subscription {
@@ -102,4 +265,34 @@ type Subscription {
 """The `TimeSpan` scalar represents an ISO-8601 compliant duration type."""
 scalar TimeSpan
 
+input TimeSpanOperationFilterInput {
+  eq: TimeSpan
+  gt: TimeSpan
+  gte: TimeSpan
+  in: [TimeSpan]
+  lt: TimeSpan
+  lte: TimeSpan
+  neq: TimeSpan
+  ngt: TimeSpan
+  ngte: TimeSpan
+  nin: [TimeSpan]
+  nlt: TimeSpan
+  nlte: TimeSpan
+}
+
 scalar UUID
+
+input UuidOperationFilterInput {
+  eq: UUID
+  gt: UUID
+  gte: UUID
+  in: [UUID]
+  lt: UUID
+  lte: UUID
+  neq: UUID
+  ngt: UUID
+  ngte: UUID
+  nin: [UUID]
+  nlt: UUID
+  nlte: UUID
+}
